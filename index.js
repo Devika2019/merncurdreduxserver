@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.json())
-// mongoose.connect('mongodb://localhost:27017/crud')
+// mongoose.connect('mongodb://localhost:27017/crud/')
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

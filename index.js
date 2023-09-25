@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const UserModel = require('./models/User')
 const PORT = process.env.PORT || 3001
 
@@ -9,7 +10,21 @@ const PORT = process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.json())
-mongoose.connect('mongodb://localhost:27017/crud')
+// mongoose.connect('mongodb://localhost:27017/crud')
+dotenv.config();
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Connected to Mongo");
+    app.listen(PORT, () => {
+      console.log("Backend server is ready");
+    });
+  })
+  .catch(error => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 
 app.get('/',(req,res)=>{
     UserModel.find()

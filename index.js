@@ -51,8 +51,8 @@ app.delete('/deleteUser/:id',(req,res)=>{
     .then(response =>res.json(response))
     .catch(err=>res.json(err))
 })
-app.listen(PORT, () =>{
-    console.log("Server is running")
-})
+// app.listen(PORT, () =>{
+//     console.log("Server is running")
+// })
   
   

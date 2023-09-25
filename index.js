@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require("mongoose");
 const UserModel = require('./models/User')
+const PORT = process.env.PORT || 3001
 
 
 
@@ -35,7 +36,7 @@ app.delete('/deleteUser/:id',(req,res)=>{
     .then(response =>res.json(response))
     .catch(err=>res.json(err))
 })
-app.listen(3001, () =>{
+app.listen(PORT, () =>{
     console.log("Server is running")
 })
   
